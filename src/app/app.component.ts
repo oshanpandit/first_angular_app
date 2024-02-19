@@ -1,25 +1,36 @@
-import { Component} from '@angular/core';
+import { Component,OnInit} from '@angular/core';
+import { loggingService } from './logging.service';
+import { createService } from './create.service';
+
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  // styles:[]
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
 
-   items=["soyaben"];
-  
+   items=[];
    curr='';
+
+   constructor(private loggingService:loggingService,private createService:createService){}
+   
+   ngOnInit(){
+      this.items=this.createService.items;
+   }
+  
+  
    onInput(event){
     this.curr=event.target.value;
    }
 
    addItem(){
      if(this.curr!=''){
-       this.items.push(this.curr);
+      this.createService.onAdding(this.curr);
      }
    }
-   onDelete(index){
-      this.items.splice(index,1);
-   }
+  //  onDelete(index){
+     
+  //     this.createService.onRemove(index);
+  //  }
+
   }
