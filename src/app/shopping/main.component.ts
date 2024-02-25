@@ -22,6 +22,7 @@ import { createService } from '../create.service';
 export class MainComponent {
 
   items=[];
+  curr="";
   
   constructor(private loggingService:loggingService,private createService:createService){}
   
@@ -31,6 +32,16 @@ export class MainComponent {
   onDelete(index){
     
      this.createService.onRemove(index);
+  }
+  
+  onInput(event){
+   this.curr=event.target.value;
+  }
+
+  addItem(){
+    if(this.curr!=''){
+     this.createService.onAdding(this.curr);
+    }
   }
  
 

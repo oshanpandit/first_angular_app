@@ -1,5 +1,7 @@
 export class loggingService{
 
+    hasLogged=false;
+
      onAdd(call:string){
         console.log("Task Has Been Added "+call);
      }

@@ -1,3 +1,13 @@
+<br>
+<div style="text-align: center;">
+    <input type="text" [(ngModel)]="curr" style="width: 70%; border: 2px solid blue; border-radius: 5px; padding: 10px; font-size: 18px;">
+    <br>
+    <h3>{{curr}}</h3>
+    <br>
+    <button type="submit" (click)="addItem()" style="background-color: blue; color: white; border: none; border-radius: 5px; padding: 10px 20px; font-size: 18px; cursor: pointer; transition: background-color 0.3s;">Add</button>
+    <br><br>  
+</div>
+  
 
 <div *ngIf="items.length==0" style="text-align: center;">
     <h4>No Item/Grocery Attached.</h4>

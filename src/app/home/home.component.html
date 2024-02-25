@@ -1,0 +1,22 @@
+<div class="login-container">
+  <form class="login-form" (ngSubmit)="onSubmit(ref)" #ref="ngForm">
+    <h2>Login</h2>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" ngModel name="username" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" ngModel name="email" required email #eref="ngModel">
+      <p *ngIf="!eref.valid">Please Enter a Valid Email</p>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" ngModel name="password" minlength="6">
+    </div>
+    <button type="submit" [disabled]="!isValid(ref)">{{isLoginMode ? 'Login' : 'Sign Up'}}</button><br><br>
+    </form>
+
+</div>
+
+<button (click)="onSwitchMode()">Switch to {{isLoginMode ? 'Sign Up' : 'Login'}}</button>

@@ -1,36 +1,30 @@
 import { Component,OnInit} from '@angular/core';
 import { loggingService } from './logging.service';
 import { createService } from './create.service';
-
+import { AuthService } from './home/home.service';
+import { Subject,Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrl:'./app.component.css'
 })
 export class AppComponent {
 
-   items=[];
-   curr='';
+  constructor(private AuthService:AuthService,private router:Router){};
+  userSub:Subscription;
+  isAuthenticated=false;
+  ngOnInit(){
+     this.userSub=this.AuthService.user.subscribe(user=>{
+       this.isAuthenticated=!user ? false : true;
+       console.log(user);
 
-   constructor(private loggingService:loggingService,private createService:createService){}
-   
-   ngOnInit(){
-      this.items=this.createService.items;
-   }
-  
-  
-   onInput(event){
-    this.curr=event.target.value;
-   }
-
-   addItem(){
-     if(this.curr!=''){
-      this.createService.onAdding(this.curr);
-     }
-   }
-  //  onDelete(index){
-     
-  //     this.createService.onRemove(index);
-  //  }
-
+     })
   }
+  changeAuth(){
+    this.isAuthenticated=false;
+    this.router.navigate(['/']);
+  }
+
+}

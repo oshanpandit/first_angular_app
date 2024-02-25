@@ -1,0 +1,24 @@
+<div style="text-align: center;">
+    <input type="text" [(ngModel)]="curr" style="width: 70%; border: 2px solid blue; border-radius: 5px; padding: 10px; font-size: 18px;">
+    <br>
+    <h3>{{curr}}</h3>
+    <br>
+    <button type="submit" (click)="addItem('urgent')" class="urgent-button">urgent</button>&nbsp;&nbsp;
+    <button type="submit" (click)="addItem('normal')" class="urgent-button">Normal</button><br><br>
+    <input type="text" [(ngModel)]="type">
+    <br><br>  
+</div><br>
+
+
+<button class="return-button" (click)="onRedirect()">Return to Shopping</button>
+
+<div *ngIf="items.length==0" style="text-align: center;">
+    <h4>No Item.</h4>
+</div>
+
+<div *ngIf="items.length>0">
+    <div *ngFor="let item of items | filterPipe:type;index as i" class="item-container">
+        <div>{{item.text}}</div>
+        <button class="delete-button" (click)="onDelete(i)">✖</button>
+    </div>
+</div>

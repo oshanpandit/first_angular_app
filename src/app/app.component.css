@@ -1,3 +1,35 @@
-#heading{
-    color:red;
-}
+.nav-buttons {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+  }
+  
+  .nav-buttons li {
+    margin-right: 20px; /* Adjust spacing between buttons */
+  }
+  
+  .nav-buttons li:last-child {
+    margin-right: 0; /* Remove margin from last button */
+  }
+  
+  .nav-buttons li:hover {
+    cursor: pointer;
+    background-color: #ADD8E6; /* Light blue background color on hover */
+    border-radius: 5px; /* Add some rounded corners */
+    padding: 8px 12px; /* Adjust padding for better button appearance */
+  }
+  
+  .nav-buttons li a {
+    text-decoration: none;
+    color: #333; /* Button text color */
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .nav-buttons li:hover a {
+    color: #000; /* Change text color on hover */
+  }
+  
